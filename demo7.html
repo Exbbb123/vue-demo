@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for循环</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <template v-for="(book,index) in filterBooks">
+                <li>{{index+1}}-书名：{{book.name}}</li>
+                <li>    _作者：{{book.author}}</li>
+            </template>
+        </ul>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                books:[
+                    {
+                        name:'《show-aoao》',
+                        author:'aoao'
+                    },
+                    {
+                        name:'《show-bobo》',
+                        author:'bobo'
+                    },
+                    {
+                        name:'《coco》',
+                        author:'coco'
+                    }
+                ]
+            },
+            computed:{
+                filterBooks:function(){
+                    return this.books.filter(function(book){
+                        return book.name.match(/show/);
+                    });
+                }
+            }
+        })
+    </script>
+</body>
+</html>

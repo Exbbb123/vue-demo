@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉列表</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <select v-model="selected">
+            <option
+                v-for="option in options"
+                :value="option.value">{{option.text}}</option>
+        </select>
+        <p>选择的项是：{{selected}}</p>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                selected:'',
+                options:[
+                    {
+                        value:'html',
+                        text:'HTML'
+                    },
+                    {
+                        value:'css',
+                        text:'CSS'
+                    },
+                    {
+                        value:'js',
+                        text:'JAVASCRIPT'
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

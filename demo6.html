@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渲染的复用</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <template v-if="type==='name'">
+            <label>name</label>
+            <input placeholder="please input your name" key="name-input">
+        </template>
+        <template v-else>
+            <label>e-mail</label>
+            <input placeholder="please input your e-mail" key="mail-input">
+        </template>
+        <button @click="handleToggle">切换输入类型</button>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                type:'name'
+            },
+            methods:{
+                handleToggle:function(){
+                    this.type = this.type === 'name' ? 'e-mail' : 'name' ;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

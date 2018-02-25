@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if使用</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <p v-if="status === 1">当status等于1时,显示该行</p>
+        <p v-else-if="status === 2">当status等于2时,显示该行</p>
+        <p v-else>当status等于其它时,显示该行</p>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                status:1
+            }
+        })
+    </script>
+</body>
+</html>

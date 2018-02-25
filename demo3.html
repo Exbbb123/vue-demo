@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算-时间显示</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="app">
+        {{formatDate}}
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        
+        // 在小于10的时间前补0
+        var padDate = function(value){
+            return value<10? '0'+value : value;
+        };
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                date:new Date()
+            },
+            computed:{
+                formatDate:function(){
+                    var date = this.date;
+                    var year = date.getFullYear();
+                    var month = padDate(date.getMonth() + 1);
+                    var day = padDate(date.getDate());
+                    var hours = padDate(date.getHours());
+                    var minutes = padDate(date.getMinutes());
+                    var seconds = padDate(date.getSeconds());
+                    return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds ;
+                }
+            },
+            mounted:function(){
+                var _this=this ;
+                this.timer = setInterval(function(){
+                    _this.date = new Date();
+                },1000);
+            },
+            beforeDestroy:function(){
+                if (this.timer){
+                    clearInterval(this.timer);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
